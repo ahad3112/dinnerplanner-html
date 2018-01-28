@@ -17,10 +17,10 @@ var DinnerPrintoutView = function (container, model) {
 				   " Phasellus imperdiet, nulla et dictum interdum, nisi lorem" +
 				   " egestas odio, vitae scelerisque enim ligula venenatis dolor." +
 				   " Maecenas nisl est, ultrices nec congue eget, auctor vitae massa." +
-				   " Fusce luctus vestibulum augue ut aliquet." + 
+				   " Fusce luctus vestibulum augue ut aliquet."  + 
 				   " Lorem ipsum dolor sit amet, consectetur adipiscing elit." +
 				   " Phasellus imperdiet, nulla et dictum interdum, nisi lorem" +
-				   " egestas odio, vitae scelerisque enim ligula venenatis dolor." +
+				   " egestas odio, vitae scelerisque enim ligula venenatis dolor."  +
 				   " Maecenas nisl est, ultrices nec congue eget, auctor vitae massa." +
 				   " Fusce luctus vestibulum augue ut aliquet."
 
