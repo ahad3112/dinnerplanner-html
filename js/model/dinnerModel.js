@@ -7,7 +7,7 @@ var DinnerModel = function() {
 
 	this.setNumberOfGuests = function(num) {
 		//TODO Lab 1
-		myDinnerMenu.noOfGuests = 20;
+		myDinnerMenu.noOfGuests = num;
 	}
 	
 	this.getNumberOfGuests = function() {
