@@ -1,0 +1,382 @@
+html {
+	height: 100%;
+}
+
+/*------------------------- Common Style ---------------------------------------------*/
+button {
+	background-color: #87CEFA;
+}
+
+/*---------------------- Style for main flex container -------------------------------*/
+body {
+	height: 100%;
+	overflow: hidden; 			/* Makes the body non-scrollable */
+	margin-top: 0px;			/* Removing default style */
+	display: flex;
+	flex-direction: column;
+	border: 1px solid black;
+}
+
+
+
+/*-------------------------- Style for main flex container's elements --------------------------*/
+.form-column {
+	font-family: courier;
+}
+
+/*--------------------------------- Style for the header-----------------------------------------*/
+#my-header {
+	flex: 2; 					/* flex: growth shrink flex-basis */
+	background-color: rgba(1,1,1,.1);
+	text-align: center;
+	border: 1px solid black;
+}
+
+#my-header h1 {
+	padding-top: 15px;
+	font-weight: bold;
+}
+
+
+/*--------------------------------------------------------------------------------------------------*/ 
+/*--------------------------------------- Welcome starts -------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------*/  
+#welcome-my-body {
+	flex: 7;				/* flex: growth shrink flex-basis */
+	display: flex;			
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+#welcome-welcome {
+	width: 50%;
+}
+#welcome-welcome p {
+	text-align: center;
+}
+
+/*--------------------------------------------------------------------------------------------------*/ 
+/*---------------------------------------- Welcome ends --------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------------------------------------------*/ 
+/*------------------------------------ Select Dish starts ------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------*/
+
+/*-------------------------- Style for the body (select dish) --------------------------------------*/
+#my-body {
+	flex: 7;				/* flex: growth shrink flex-basis */
+	display: flex;
+	flex-direction: row;
+}
+
+.form-row{
+
+}
+
+/*----------------------- Style for the left panel of the body ------------------------*/
+#left-panel {
+	flex: 2 0;				/* flex: growth shrink flex-basis */
+							/* shrink: 0 -> Make sure content will not shrink for smaller browser size */
+	padding: 0px 5px 0px 5px;
+	border: 1px solid black;
+	display: flex;
+	flex-direction: column;
+}
+
+#left-panel h5{
+	font-weight: bold;
+}
+
+#confirm-order {
+	align-self: center;
+	margin-top: 20%;
+}
+
+#my-dishes-info {
+	display: flex;
+	flex-direction: column;
+}
+
+.dishes-info-column {
+
+}
+
+#dish-list {
+	
+}
+
+.dishes-table {
+	width: 100%;
+}
+
+.dishes-table, .dishes-table th, .dishes-table  td {
+	border: 1px solid black;
+}
+
+.dishes-table th, .dishes-table td {
+	width: 50%;
+	text-align: center;
+}
+.dishes-table td {
+	margin: 5px;
+}
+
+.dishes-table th {
+	background-color: rgba(1,1,1,.20);
+}
+
+.dishes-table tr:nth-child(even) {
+	background-color: #eee;
+}
+
+.dishes-table tr:nth-child(odd) {
+	background-color: #fff;
+}
+
+#total-cost {
+	margin-top: 10px;
+	align-self: flex-end;
+}
+
+/*----------------------- Style for the right panel of the body ------------------------*/
+#right-panel {
+	flex: 8;				/* flex: growth shrink flex-basis */
+	display: flex;
+	flex-direction: column;
+}
+
+.form-right-column {
+	padding: 0px 5px 0px 5px;
+}
+
+#top-right-panel {
+	border: 1px solid black;
+	flex: 2;
+}
+
+#top-right-panel h5{
+	font-weight: bold;
+}
+
+#bottom-right-panel {
+	flex: 8;
+	overflow-y: auto; 		/* Adding scroll to the container in the y-direction*/ 
+	border: 1px solid black;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#bottom-right-panel > div {
+	border: 1px solid black;
+	padding: 10px 50px 10px 50px;	/* Not working as expected !!!!!!!!*/
+	box-sizing: border-box;			/* Use of padding and width require box-sizing for the simplicity for css */
+	flex-basis: 30%; 			    /* Another form of width in flex. 3 pictures will cover 90% , the remaining 10% will be evenly distributed as margin*/
+	margin: 40px 0px 0px 0px;		 
+}
+
+#bottom-right-panel > div figure figcaption {
+		/* Need to bring the figure in the middle of the box */
+		/*text-align: center;*/
+}
+
+/*--------------------------------------------------------------------------------------------------*/ 
+/*------------------------------------ Select Dish ends --------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------*/
+
+
+
+/*--------------------------------------------------------------------------------------------------*/ 
+/*-------------------------------------- Dish Details starts ---------------------------------------*/
+/*--------------------------------------------------------------------------------------------------*/
+
+#dish-details-right-panel {
+	flex: 8;				/* flex: growth shrink flex-basis */
+	display: flex;
+	flex-direction: row;
+	overflow-y: auto;		/* Adding scroll bar */
+}
+
+.form-row-dish-details {
+	flex: 1;
+	margin-left: 20px;
+}
+
+#dish-details-back-to-search {
+	margin-top: 20px;
+}
+
+#dish-details-preparation {
+	margin-top: 40px;
+}
+
+#dish-details-preparation-details {
+	text-align: justify;
+}
+
+#ingredients {
+	background-color: #F3FAA3;
+	border: 1px solid black;
+	padding: 0px 10px 0px 10px;
+	height: 90%;
+}
+
+#ingredients hr {
+	border: 1px solid black;
+}
+
+#add-n-price {
+	display: flex; 
+					/* If no direction is defined it will be stacked in the row */ 
+	flex-wrap: nowrap;
+	justify-content: space-between;
+}
+
+#dish-details-ingredients-table {
+	width: 100%;
+}
+
+#dish-details-ingredients-table tr, #dish-details-ingredients-table td{
+	text-align: right;
+}
+
+
+/*--------------------------------------------------------------------------------------------------*/ 
+/*-------------------------------------- Dish Details ends -----------------------------------------*/
+/*--------------------------------------------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------------------------------------------*/ 
+/*------------------------------------ Dinner overview starts --------------------------------------*/
+/*--------------------------------------------------------------------------------------------------*/
+#dinner-overview-body {
+	flex: 7;
+	display: flex;
+	flex-direction: column; 
+}
+
+#dinner-overview-body hr {
+	border: 1px solid black;
+}
+
+#dinner-overview-body-top {
+	flex: 2;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	margin: 0px 20px 0px 20px;
+}
+
+
+#dinner-overview-body-top #go-back-n-edit {
+	font-weight: bold;
+}
+
+
+#dinner-overview-body-middle {
+	flex: 6;
+	overflow-y: auto;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	margin: 0px 20px 0px 20px;
+	padding: 10px 0px 10px 0px;
+	border-top: 2px solid black;
+	border-bottom: 2px solid black;
+}
+#dinner-overview-my-menu-info {
+	flex: 2;
+	border-right: 2px solid black;
+	padding-right: 10px;
+	align-self: flex: start;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	align-items: center;
+}
+
+#dinner-overview-my-menu-info > div {
+	border: 1px solid black;
+}
+
+
+#dinner-overview-total-price {
+	flex: 1;
+	padding-left: 10px;
+	align-self: flex-end;
+}
+
+#dinner-overview-my-menu-info hr {
+}
+
+
+#dinner-overview-body-bottom {
+	flex: 2;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0px 20px 0px 20px;
+}
+
+#print-full-recipe {
+
+}
+
+/*--------------------------------------------------------------------------------------------------*/ 
+/*-------------------------------------- Dinner overview ends --------------------------------------*/
+/*--------------------------------------------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------------------------------------------*/ 
+/*-------------------------------------- Dinner Printout starts ------------------------------------*/
+/*--------------------------------------------------------------------------------------------------*/
+#dinner-printout-body {
+	flex: 7;
+	display: flex;
+	flex-direction: column; 
+}
+
+#dinner-printout-body-top {
+	flex: 2;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	margin: 0px 20px 0px 20px;
+}
+
+#dinner-printout-body-bottom {
+	flex: 8;
+	overflow-y: auto; 
+	border-top: 2px solid black;
+	margin: 0px 20px 0px 20px;
+}
+
+#dinner-printout-body-dishes-info td {
+	padding-right: 30px;
+}
+/*--------------------------------------------------------------------------------------------------*/ 
+/*-------------------------------------- Dinner Printout ends --------------------------------------*/
+/*--------------------------------------------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------------------------------------------*/ 
+/*----------------------------------------- Footer starts ------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------*/
+
+#my-footer {
+	flex: 1;				/* flex: growth shrink flex-basis */
+	text-align: center;
+	border: 1px solid black;
+}
+
+/*--------------------------------------------------------------------------------------------------*/ 
+/*----------------------------------------- Footer ends ------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------*/

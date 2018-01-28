@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dinner planner - Dish Details</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="myStyle/myStyle.css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+
+  </head>
+
+  <body id="dish-details-container">
+
+    <div class="form-column" id="my-header">
+        <h1>Dinner Planner</h1>
+    </div>
+
+    <div class="form-column" id="my-body" >
+
+      <div class="form-row" id="left-panel">
+        <div>
+          <h5>My Dinner</h5>
+          <p>People: <select id="dish-details-selected-people"></select></p>
+        </div>
+
+        <div id="my-dishes-info">
+          <div class="dishes-info-column" id="dish-list">
+            <table class="dishes-table">
+              <tr>
+                <th>
+                  Dish Name
+                </th>
+                <th>
+                  Cost
+                </th>
+              </tr>
+            </table>
+          </div>
+          <div class="dishes-info-column" id="total-cost">
+            SEK 0.00
+          </div>
+        </div>
+        <div id="confirm-order">
+            <button type="button" id="confirm-dinner-button"> Confirm Dinner </button>
+        </div>
+
+
+      </div>
+
+      <div class="form-row" id="dish-details-right-panel">
+
+        <div class="form-row-dish-details" id="info-n-prep">
+          <h3 id="dish-details-name"></h3>
+          <div id="dish-details-fig-n-info">
+            
+          </div>
+          <button type="button" id="dish-details-back-to-search">back to search</button>
+          <article id="dish-details-preparation">
+            <h3 id="dish-details-preparation-header">PREPARATION</h3>
+            <p id="dish-details-preparation-details">
+            </p>
+          </article>
+        </div>
+
+        <div class="form-row-dish-details" id="ingredients">
+          <h5>INGREDIENTS FOR <span id="dish-details-selected-people"></span> PEOPLE</h5>
+          <hr>
+          <table id="dish-details-ingredients-table">
+
+          </table>
+          <hr>
+          <div id="add-n-price">
+            <button id="add-n-price-add">Add to menu</button>
+            <p id="add-n-price-total-price"></p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="form-column" id="my-footer">
+      Footer
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+	 <!-- The application JavaScript code -->
+	 <script src="js/app.js"></script>
+   <script src="js/model/dinnerModel.js"></script>  
+	 <script src="js/view/exampleView.js"></script>
+	 <!-- TODO: Here you should include JS code for your other views -->
+   <script src="js/view/selectDishView.js"></script>
+   <script src="js/view/selectDishAgainView.js"></script>
+   <script src="js/view/dishDetailsView.js"></script>
+   <script src="js/view/dinnerOverviewView.js"></script>
+   <script src="js/view/dinnerPrintoutView.js"></script>
+
+  </body>
+</html>

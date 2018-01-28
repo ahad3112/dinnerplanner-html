@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dinner planner - Select Dish</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="myStyle/myStyle.css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+
+  </head>
+
+  <body id="select-dish-container">
+
+    <div class="form-column" id="my-header">
+        <h1>Dinner Planner</h1>
+    </div>
+
+    <div class="form-column" id="my-body" >
+
+      <div class="form-row" id="left-panel">
+        <div>
+          <h5>My Dinner</h5>
+          <p>People: <select id="selectNoOfPeople"></select></p>
+        </div>
+
+        <div id="my-dishes-info">
+          <div class="dishes-info-column" id="dish-list">
+            <table class="dishes-table">
+              <tr>
+                <th>
+                  Dish Name
+                </th>
+                <th>
+                  Cost
+                </th>
+              </tr>
+            </table>
+          </div>
+          <div class="dishes-info-column" id="total-cost">
+            SEK 0.00
+          </div>
+        </div>
+        <div id="confirm-order">
+            <button type="button" id="confirm-dinner-button"> Confirm Dinner </button>
+        </div>
+
+
+      </div>
+
+      <div class="form-row" id="right-panel">
+
+        <div class="form-right-column" id="top-right-panel">
+          <h5>FIND A DISH</h5>
+          <div>
+            <input type="search" id="searchByKeyWords" placeholder="Enter key words">
+            <select id="searchByMenu">
+              <!-- This is populated by java script -->
+            </select>
+            <button type="button" > Search</button>
+          </div>
+        </div>
+
+        <div class="form-right-column" id="bottom-right-panel">
+          <!-- This content is populated by the java script -->
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="form-column" id="my-footer">
+      Footer
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+   <!-- The application JavaScript code -->
+   <script src="js/app.js"></script>
+   <script src="js/model/dinnerModel.js"></script>  
+   <script src="js/view/exampleView.js"></script>
+   <!-- TODO: Here you should include JS code for your other views -->
+   <script src="js/view/welcomeView.js"></script>
+   <script src="js/view/selectDishView.js"></script>
+   <script src="js/view/selectDishAgainView.js"></script>
+   <script src="js/view/dishDetailsView.js"></script>
+   <script src="js/view/dinnerOverviewView.js"></script>
+   <script src="js/view/dinnerPrintoutView.js"></script>
+
+  </body>
+</html>

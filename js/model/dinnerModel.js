@@ -3,45 +3,122 @@ var DinnerModel = function() {
  
 	//TODO Lab 1 implement the data structure that will hold number of guest
 	// and selected dishes for the dinner menu
-
+	var myDinnerMenu = {noOfGuests: 0, myDishes: [] };
 
 	this.setNumberOfGuests = function(num) {
 		//TODO Lab 1
+		myDinnerMenu.noOfGuests = 20;
 	}
 	
 	this.getNumberOfGuests = function() {
 		//TODO Lab 1
+		return myDinnerMenu.noOfGuests;
 	}
 
 	//Returns the dish that is on the menu for selected type 
 	this.getSelectedDish = function(type) {
 		//TODO Lab 1
+		for(key in myDinnerMenu.myDishes) {
+			if(myDinnerMenu.myDishes[key].type === type){ // need to check with ==
+				return myDinnerMenu.myDishes[key];
+			}
+		}
 	}
 
 	//Returns all the dishes on the menu.
 	this.getFullMenu = function() {
 		//TODO Lab 1
+		return myDinnerMenu.myDishes;
 	}
 
 	//Returns all ingredients for all the dishes on the menu.
 	this.getAllIngredients = function() {
 		//TODO Lab 1
+		var myIngredients = [];
+		for (key in myDinnerMenu.myDishes) {
+			myIngredients.push(myDinnerMenu.myDishes[key].ingredients);
+		}
+
+		return myIngredients;
+
+	}
+
+	// This method return the cost of a single dish from the menu using dish ID cost to be used in the selected menu list
+	/********************************************* Added by me ******************************/
+	this.getSingleDishPrice = function (id) {
+		var dishPrice = 0.0;
+
+		singleDish:
+		for (key in myDinnerMenu.myDishes) {
+			if ( myDinnerMenu.myDishes[key].id == id) {
+				for(ing in myDinnerMenu.myDishes[key].ingredients){
+					dishPrice += myDinnerMenu.myDishes[key].ingredients[ing].price;
+				}
+
+				break singleDish;
+			}
+		}
+		return myDinnerMenu.noOfGuests * dishPrice;
 	}
 
 	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
 	this.getTotalMenuPrice = function() {
 		//TODO Lab 1
+		var totalPrice = 0.0;
+		for (key in myDinnerMenu.myDishes) {
+			for(ing in myDinnerMenu.myDishes[key].ingredients){
+				totalPrice += myDinnerMenu.myDishes[key].ingredients[ing].price;
+			}
+		}
+
+		return myDinnerMenu.noOfGuests * totalPrice;
 	}
 
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
-		//TODO Lab 1 
+		//TODO Lab 1
+		// First get the dish with the ID
+		var dishToAdd;
+
+		getDishWithID:
+		for(key in dishes){
+			if(dishes[key].id == id) {
+				dishToAdd = dishes[key];
+				break getDishWithID;
+			}
+		}
+
+		// first remove the dish with the same type if it is in the menu
+		matchingTYPE:
+		for (key1 in myDinnerMenu.myDishes) {
+			if(myDinnerMenu.myDishes[key1].type == dishToAdd.type){
+				myDinnerMenu.myDishes.splice(key1,1); 		// first param: position where new element should be added
+															// second param: how many elements should be removed
+															// third, fourth, ... param: elements to be added
+															// ref: https://www.w3schools.com/js/js_array_methods.asp	
+				break matchingTYPE;
+			}
+		}
+
+		// Adding dish
+		myDinnerMenu.myDishes.push(dishes[key]);
+
 	}
 
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
 		//TODO Lab 1
+		matchingID:
+		for (key in myDinnerMenu.myDishes) {
+			if(myDinnerMenu.myDishes[key].id == id){
+				myDinnerMenu.myDishes.splice(key,1); 		// first param: position where new element should be added
+															// second param: how many elements should be removed
+															// third, fourth, ... param: elements to be added
+															// ref: https://www.w3schools.com/js/js_array_methods.asp	
+				break matchingID;
+			}
+		}
 	}
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")

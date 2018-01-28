@@ -7,10 +7,30 @@
     <title>Dinner planner</title>
 
     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="myStyle/myStyle.css">
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
 
   </head>
+
+  <header id="myHeader">
+  	Dinner Planner
+  </header>
+
   <body>
+  	<div class="welcomeContainer">
+  		 <div id="welcomeNote">
+  		 	<p id="welcomeText">
+  		 		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. 
+  		 	</p>
+  		</div>
+  		<div id="createDinner">
+  			<button id="createDinnerButton" type="button" >Create New Dinner</button>
+  		</div>
+  	</div>
+
+
+
+
 	<div class="container">
 		<h1>Dinner planner</h1>
 		<div id="exampleView">
@@ -18,11 +38,12 @@
 				Number of guests: <span id="numberOfGuests"></span>
 			</div>
 			<div>
-          <button id="minusGuest" class="btn"><span class="glyphicon glyphicon-minus"></span></button>
+          		<button id="minusGuest" class="btn"><span class="glyphicon glyphicon-minus"></span></button>
 				<button id="plusGuest" class="btn"><span class="glyphicon glyphicon-plus"></span></button>
 			</div>
 		</div>
 	</div>
+
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery.js"></script>
@@ -34,5 +55,7 @@
 	<script src="js/model/dinnerModel.js"></script>
 	<script src="js/view/exampleView.js"></script>
 	<!-- TODO: Here you should include JS code for your other views -->
+	<script src="js/view/welcomeView.js"></script>
+
   </body>
 </html>
