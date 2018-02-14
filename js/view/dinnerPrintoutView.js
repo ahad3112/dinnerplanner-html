@@ -1,11 +1,11 @@
 var DinnerPrintoutView = function (container, model) {
 
 	/*--------------------------------- Adding the selected no of guests ------------------------------*/
-	var selectedNoOfPleople = container.find("#dinner-printout-selected-people");
+	var selectedNoOfPleople = container.find("#dinner-printout-view-selected-people");
 	selectedNoOfPleople.html(model.getNumberOfGuests());
 
 	/*--------------------------------- Adding dishes info  ------------------------------*/
-	var printOutTable = container.find("#dinner-printout-body-dishes-info");
+	var printOutTable = container.find("#dinner-printout-view-body-dishes-info");
 
 	var dishInfo = " Lorem ipsum dolor sit amet, consectetur adipiscing elit." +
 				   " Phasellus imperdiet, nulla et dictum interdum, nisi lorem" +

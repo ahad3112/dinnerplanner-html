@@ -1,11 +1,11 @@
 
 var DinnerOverviewView = function ( container, model) {
 	/*--------------------------------- Adding the selected no of guests ------------------------------*/
-	var selectedNoOfPleople = $("#dinner-overview-selected-people");
+	var selectedNoOfPleople = container.find("#dinner-overview-view-selected-people");
 	selectedNoOfPleople.html(model.getNumberOfGuests());
 
 	/*--------------------------------- Populate my selected dishes with price -------------------------*/
-	var myDinnerOverView = $("#dinner-overview-my-menu-info");
+	var myDinnerOverView = container.find("#dinner-overview-view-my-menu-info");
 	var myMenus = model.getFullMenu();
 	var pic ;												// variable to hold the image path
 	var dishName;											// variable to hold the name of the dish
@@ -26,7 +26,7 @@ var DinnerOverviewView = function ( container, model) {
 
 
 	/*---------------------------------------- Adding the total price  --------------------------------*/
-	var totalPrice = $("#dinner-overview-my-price");
+	var totalPrice = container.find("#dinner-overview-view-my-price");
 	totalPrice.html(model.getTotalMenuPrice() + " SEK");
 
 }

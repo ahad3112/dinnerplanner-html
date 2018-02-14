@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dinner planner</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+
+    <script type="text/javascript">
+      function myFunction() {
+        var x = document.getElementById("select-dish-view-left-panel");
+        if (x.className === "select-dish-view-row") {
+            x.className += " responsive";
+        } else {
+            x.className = "select-dish-view-row";
+        }
+      }
+
+    </script>
+
+  </head>
+
+  <body id="dinner-planner-view">
+
+    <!-- Header -->
+    <div class="layout-column" id="layout-header">
+      <div id="layout-responsive-sidebar">
+          <a href="javascript:void(0);" id="collapsible-icon" onclick="myFunction()">&#9776;</a>
+      </div>
+      <h2 id="layout-header-title">DINNER PLANNER</h2>
+    </div>
+    <!-- MAIN Body -->
+    <div class="layout-column" id="layout-body">
+
+      <!-- Weolcome View -->
+      <div id="welcome-view">
+        <p id="welcome-note">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet.
+        </p>
+        <button type="button" id="create-new-dinner"><span>CREATE NEW DINNER</span></button>
+      </div>
+
+
+      <!-- Select Dish View + Dish details -->
+      <div id="select-dish-view">
+         <div class="select-dish-view-row" id="select-dish-view-left-panel">
+          <h4 id="select-dish-view-left-panel-title">MY DINNER</h4>
+          <div id="select-dish-view-left-panel-guest">
+              <p>People: <select id="select-dish-view-left-panel-guest-no"></select></p>
+              <!-- This should be replaced by -/+ button-->
+              <!--
+              <button id="select-dish-view-left-panel-guest-minus" class="btn"><span class="glyphicon glyphicon-minus"></span></button>
+              <button id="select-dish-view-left-panel-guest-plus" class="btn"><span class="glyphicon glyphicon-plus"></span></button>
+            -->
+          </div>
+
+          <table id="select-dish-view-left-panel-my-dinner-table">
+            <tr>
+              <th>
+                Dish name
+              </th>
+              <th>
+                Cost
+              </th>
+            </tr>
+          </table>
+          <p id="select-dish-view-total-cost">SEK 0.0</p>
+          <button type="button" id="select-dish-view-confirm-dinner"><span>CONFIRM DINNER</span></button>
+         </div>
+
+         <div class="select-dish-view-row" id="select-dish-view-right-panel">
+            <div class="select-dish-view-column" id="select-dish-view-top-right-panel">
+              <h5>FIND A DISH</h5>
+              <div>
+                <input type="search" id="search-by-keyWords" placeholder="Enter key words">
+                <select  id="search-by-menu">
+                  <!-- <option selected disabled value=" ">Select Your Menu</option> -->
+                  <option selected value="all">All</option>
+                  <!-- This is populated by java script -->
+                </select>
+                <button type="button" id="select-dish-view-search"><span> SEARCH</span></button>
+              </div>
+            </div>
+
+            <div class="select-dish-view-column" id="select-dish-view-bottom-right-panel">
+              <!-- This content is populated by the java script -->
+            </div>
+         </div>
+
+         <!-- Dish Details View will replace select-dish-view-right-panel-->
+         <div class="select-dish-view-row" id="dish-details-view-right-panel">
+
+            <div class="dish-details-view-row" id="dish-details-view-info-n-prep">
+              <h3 id="dish-details-view-dish-name"></h3>
+              <div id="dish-details-view-fig-n-info">
+
+              </div>
+              <button type="button" id="dish-details-view-back-to-search">BACK TO SEARCH</button>
+              <article id="dish-details-view-dish-preparation">
+                <h3 id="dish-details-view-preparation-header">PREPARATION</h3>
+                <p id="dish-details-view-preparation-details">
+                </p>
+              </article>
+            </div>
+
+
+            <div class="dish-details-view-row" id="dish-details-view-ingredients">
+              <h5>INGREDIENTS FOR <span id="dish-details-view-selected-people"></span> PEOPLE</h5>
+              <hr>
+              <table id="dish-details-view-ingredients-table">
+
+              </table>
+              <hr>
+              <div id="dish-details-view-add-n-price">
+                <button id="dish-details-view-add-n-price-add"> <span>ADD TO MENU</span></button>
+                <p id="dish-details-view-add-n-price-total-price"></p>
+              </div>
+
+            </div>
+
+
+         </div>
+
+      </div>
+
+      <!-- Dinner Overview -->
+      <div id="dinner-overview-view">
+
+        <div class="dinner-overview-view-column" id="dinner-overview-view-body" >
+
+          <div id="dinner-overview-view-body-top">
+            <h4 >MY DINNER: <span id="dinner-overview-view-selected-people"></span> people</h4>
+            <button type="button" id="dinner-overview-view-go-back-n-edit"> GO BACK AND EDIT DINNER</button>
+          </div>
+
+          <div id="dinner-overview-view-body-middle">
+            <div id="dinner-overview-view-my-menu-info">
+            </div>
+
+            <div id="dinner-overview-view-total-price">
+                <p>Total: </p>
+                <span id="dinner-overview-view-my-price"></span>
+            </div>
+
+          </div>
+
+          <div id="dinner-overview-view-body-bottom">
+            <button type="button" id="dinner-overview-view-print-full-recipe" ><span>Print Full Recipe</span></button>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Dinner Printout view -->
+      <div id="dinner-printout-view">
+
+        <div class="dinner-printout-view-column" id="dinner-printout-view-body" >
+
+          <div id="dinner-printout-view-body-top">
+            <h4 >My Dinner: <span id="dinner-printout-view-selected-people"></span> people</h4>
+            <button type="button" id="dinner-printout-view-go-back-n-edit"> Go back and edit dinner</button>
+          </div>
+
+          <div id="dinner-printout-view-body-bottom">
+
+            <!--  This will be populated by js -->
+            <table id="dinner-printout-view-body-dishes-info"></table>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="layout-column" id="layout-footer">
+      My footer
+    </div>
+
+
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+   <!-- The application JavaScript code -->
+   <script src="js/app.js"></script>
+   <script src="js/model/dinnerModel.js"></script>
+   <script src="js/view/exampleView.js"></script>
+   <!-- TODO: Here you should include JS code for your other views -->
+   <script src="js/view/welcomeView.js"></script>
+   <script src="js/view/selectDishView.js"></script>
+   <script src="js/view/dishDetailsView.js"></script>
+   <script src="js/view/dinnerOverviewView.js"></script>
+   <script src="js/view/dinnerPrintoutView.js"></script>
+
+   <script src="js/view/welcomeView.js"></script>
+   <script src="js/controller/welcomeViewController.js"></script>
+   <script src="js/controller/selectDishViewController.js"></script>
+   <script src="js/controller/dinnerOverviewViewController.js"></script>
+   <script src="js/controller/dinnerPrintoutViewController.js"></script>
+   <script src="js/controller/dishDetailsViewController.js"></script>
+
+  </body>
+</html>

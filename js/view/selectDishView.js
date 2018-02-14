@@ -2,67 +2,82 @@
 
 var SelectDishView = function ( container , model) {
 
+	/*--------------------------- Register the view as the observer of the model ---------------------------*/
+	model.addObserver(this);
 
-	/*-------------------------------- Populate the no of guest selection ---------------------------------*/
-	var noOfPeople = $("select#selectNoOfPeople");
-	var i;
-	var max = 10;
-	for(i = 0; i <= max; i++){
-		noOfPeople.append( $("<option>")
-    					.html(i)
-		);
+	/*--------------------------- update callback function will be called by the model ---------------------------*/
+	this.update = function() {
+		setUpdate(model.getAllDishes(model.getSelectedMenuType(), model.getSelectedFilter()));
 	}
 
+	/*--------------------------- method to show the selected menutype dishes ---------------------------*/
 
-	/*------------------- Set no. of guest in the model to use in the later view ------------------------*/
-	var noOfGuests = 10;						// Selecting no of guests
-	model.setNumberOfGuests(noOfGuests);	// setting it to the model
+	var setUpdate = function (dishesListModel){
+		var pic ;																					// variable to hold the image path
+		var dishName;																				// variable to hold the name of the dish
 
-	/*------------------- adding a dish to the dinner menu to use int the later view ------------------------*/
-	model.addDishToMenu(100);
-	model.addDishToMenu(101);
-	model.addDishToMenu(202);
+		var dishesInMenu = container.find("#select-dish-view-bottom-right-panel").empty();			// empty the select element if there exists any options
+		for(key in dishesListModel){
+			pic =  "images/" + dishesListModel[key].image;
+			dishName = dishesListModel[key].name;
 
-	/*---------------------------- remove a dish from the dinner menu (Checking) --------------------------------------*/
-	// model.removeDishFromMenu(2);
+			dishesInMenu.append( $("<div>").append($("<figure>").append($("<img>").attr("src",pic).attr("alt","Picture not found").attr("id",key))
+																.append($("<hr>"))
+																.append($("<figcaption>").append($("<a>").	html(dishName)))
+										)
+				);
 
+			// dishesInMenu.append( $("<div>").append($("<figure>").append($("<img>").attr("src",pic).attr("alt","Picture not found").attr("id",key))
+			// 												  .append($("<hr>"))
+			// 													// .append($("<figcaption>").append($("<a>").append($("<span>").html(dishName))))
+			// 													.append($("<figcaption>").append($("<a>").html(dishName)))
+			// 							)
+			// 	);
 
-	/*------------------------------ My Dinner list in a table --------------------------------------------*/
-	// var myDishesList = $("table#dishes-table");
-	// myDishesList.append($('<tr><th>' + "Dish Name" + '</th>' + 
-	// 					'<th>' + "Cost" + '</th></tr>')
-	// );
+		}
 
-	// myDishesList.append($('<tr><td>' + "Dish" + '</td>' + 
-	// 					'<td>' + "Cost" + '</td></tr>')
-	// );
+		/*------------------------------------------- Left Panel -------------------------------------------*/
+		/*--------------------------------- Adding a row in the table of my dinner --------------------------------*/
+		/*--------------------------------- Get a specific dish using ID ----------------------------------*/
+
+		var myMenus = model.getFullMenu();				// get my menu
+
+		var myDinnerTable = container.find("#select-dish-view-left-panel-my-dinner-table").empty();
+
+		myDinnerTable.append( $("<tr>").append($("<th>").html("Dish Name"))
+										.append($("<th>").html("Cost"))
+		);
+		for( key in myMenus) {
+			myDinnerTable.append( $("<tr>").append($("<td>").html(myMenus[key].name))
+											.append($("<td>").html("SEK " + model.getSingleDishPrice(myMenus[key].id)))
+			);
+		}
+
+		var myBill = container.find("#select-dish-view-total-cost");
+		myBill.html("SEK " + model.getTotalMenuPrice());
+
+	}
 
 	/*--------------------------------- Populate the menu list for search ----------------------------------*/
-	var menuList = $("select#searchByMenu");
 
-	var menus = ["All","Main Course","Side Dish","Dessert","Appetizer","---"];
+	var menus = ["Main Course","Starter","Dessert"];
+	var values = ["main dish", "starter", "dessert"];
+
+
+	var selectMenu = container.find("#search-by-menu");
 	for(key in menus){
-		menuList.append( $("<option>")
-    					.html(menus[key])
+		selectMenu.append( $("<option>").attr("value",values[key])
+							.html(menus[key])
 		);
 	}
+
+
+	/*---------------- This view contains dish details view left panel. Needs to be hiden -----------------*/
+	var dishDetailsViewRightPanel = container.find("#dish-details-view-right-panel");
+	dishDetailsViewRightPanel.hide();
 
 
 	/*-------------------------- Populating dishes based on selected menu (all-by default) -------------------------------------*/
-	var dishesList = $("#bottom-right-panel"); 				// getting the html element for dishes list for the selected menu
-	// var dishesListModel = model.getFullMenu();			// getting the dishes in the database
-	var dishesListModel = model.getAllDishes('main dish');	// getting the dishes of specific type
-	var pic ;												// variable to hold the image path
-	var dishName;											// variable to hold the name of the dish
-	for(key in dishesListModel){
-		pic =  "images/" + dishesListModel[key].image;
-		dishName = dishesListModel[key].name;
+	setUpdate(model.getAllDishes("all"));
 
-		dishesList.append( $("<div>").append($("<figure>").append($("<img>").attr("src",pic).attr("alt","Picture not found"))
-														  .append($("<hr>"))
-														  .append($("<figcaption>").html(dishName))
-									)
-			);
-
-	}
 }
