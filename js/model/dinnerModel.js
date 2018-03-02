@@ -3,7 +3,7 @@ var DinnerModel = function() {
 
 	//TODO Lab 1 implement the data structure that will hold number of guest
 	// and selected dishes for the dinner menu
-	var myDinnerMenu = {noOfGuests: 0, myDishes: [] };
+	var myDinnerMenu = {noOfGuests: 1, myDishes: [] };
 
 	// variable to hold the selected meny type
 	var selectedMenuType = "all";    // all is default value
@@ -12,7 +12,7 @@ var DinnerModel = function() {
 	var selectedFiler;
 
   // variable to hold the selected dishes to display ditails
-  var selectedDishForDetails;
+  var selectedDishIdForDetails;
 
 	// List of observers in the model
 	var observers = [];
@@ -20,6 +20,8 @@ var DinnerModel = function() {
 	this.setNumberOfGuests = function(num) {
 		//TODO Lab 1
 		myDinnerMenu.noOfGuests = num;
+		// notify all observers
+		notifyObservers("updateGuest");
 	}
 
 	this.getNumberOfGuests = function() {
@@ -185,44 +187,46 @@ var DinnerModel = function() {
 
   /*********************  Methods related to event listener and observers *****************************/
   // this method register the selected dish for details
-  this.updateSelectedDishForDetails = function(selectedDish) {
-    selectedDishForDetails = selectedDish;
-    notifyObservers();
+  this.showSelectedDishDetails = function(selectedDishId) {
+    selectedDishIdForDetails = selectedDishId;
+    notifyObservers("updateIngredients");
   }
 
-  // getter method for selectedDishForDetails dishe
-  this.getSelectedDishForDetails = function() {
-    return selectedDishForDetails;
-  }
 
   // this method add the selected dish to the dinnr menu
   this.addSelectedDish = function(){
-    var selectedDish = this.getDishUsingName(selectedDishForDetails);
+    var selectedDish = this.getDish(selectedDishIdForDetails);
     // adding the selected dish to my dinnermenu
     this.addDishToMenu(selectedDish.id);
-    notifyObservers();
+    notifyObservers("updateMyDinnerList");
   }
 	// getter method for selected filter
 	this.getSelectedFilter = function (){
 		return selectedFiler;
 	}
 
+	// getter method for selected dish id
+	this.getSelectedDishIdForDetails = function(){
+		return selectedDishIdForDetails;
+	}
 
 	// This method capture the selected dinner type to be displayed in the select dish view
 	this.updateSelectedMenuType = function (menuType){
 		selectedMenuType = menuType;
-		notifyObservers();
+		notifyObservers("updateDishesOfSelectedType");
 	}
 
 	// This method capture the selected filter to display dishes in the select dish view
 	this.updateSelectedFilter = function (filter){
 		selectedFiler = filter;
+		notifyObservers("updateDishesOfSelectedType");
 	}
 
 	// this method update the displayed dishes using user preferences
 	this.displayUserDefinedDishes = function () {
-		notifyObservers();
+		notifyObservers("updateDishesOfSelectedType");
 	}
+
 
 	// This method add observers to the model
 	this.addObserver = function(observer) {
@@ -233,7 +237,7 @@ var DinnerModel = function() {
 	// This method will notify each observers. Only called wiithin the model
 	var notifyObservers = function(obj) {
 		for(obs in observers){
-			observers[obs].update();
+			observers[obs].update(obj);
 		}
 
 	}
